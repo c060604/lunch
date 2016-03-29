@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
     if group_count <= 0
       group_count = 1
     end
-    @lunch_groups = group(group_count)
+    @lunch_groups = group(group_count, except_array=nil, with_avatar=true)
   end
 
   def form_group
@@ -151,7 +151,7 @@ class GroupsController < ApplicationController
       # 获取成员
       users = []
       @users = User.all
-      if with_avatar
+      if not with_avatar
         for user in @users
           users.push(user.name)
         end
@@ -185,7 +185,7 @@ class GroupsController < ApplicationController
     end
 
     def group (group_count=1, except_array=nil, with_avatar=false)
-      users = members
+      users = members(with_avatar)
       if except_array != nil
         for item in except_array
           users.delete(item)
