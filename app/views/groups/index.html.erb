@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>分组</h1>
+</div>
+<table class="table table-striped">
+  <tbody id="productsTable">
+    <% @lunch_groups.each do |group| %>
+      <tr>
+        <td>食家</td>
+        <td>
+          <% group.each do |user| %>
+            <%= user %>&nbsp;&nbsp;
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Back", users_path, :class => 'btn btn-primary' %>
