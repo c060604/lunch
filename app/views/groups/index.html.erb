@@ -3,12 +3,12 @@
 </div>
 <table class="table table-striped">
   <tbody id="productsTable">
-    <% @lunch_groups.each do |group| %>
+    <% @lunch_groups.each_index do |index| %>
       <tr>
-        <td>食家</td>
+        <td>食家&nbsp;<%= (index+1) %>&nbsp;组</td>
         <td>
-          <% group.each do |user| %>
-            <%= user %>&nbsp;&nbsp;
+          <% @lunch_groups[index].each do |user| %>
+            <img src="<%= user["avatar"] %>" style="width: 44px; height: 44px">&nbsp;<%= user["name"] %>&nbsp;&nbsp;&nbsp;&nbsp;
           <%end%>
         </td>
       </tr>
