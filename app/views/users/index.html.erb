@@ -5,10 +5,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:avatar) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>小伙伴</th>
+      <th>头像</th>
+      <th>创建时间</th>
+      <th>操作</th>
     </tr>
   </thead>
   <tbody>
@@ -18,9 +18,9 @@
         <td><img src="<%= user.avatar %>" style="width: 44px; height: 44px;"></td>
         <td><%= user.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%= link_to "修改",
                       edit_user_path(user), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to "删除",
                       user_path(user),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
@@ -31,7 +31,7 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to "增加小伙伴",
             new_user_path,
             :class => 'btn btn-primary' %>
 
