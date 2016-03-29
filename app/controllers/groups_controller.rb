@@ -147,13 +147,19 @@ class GroupsController < ApplicationController
       return r
     end
 
-    def members
+    def members(with_avatar=false)
       # 获取成员
       users = []
       @users = User.all
-      for user in @users
-        users.push(user.name)
-      end
+      if with_avatar
+        for user in @users
+          users.push(user.name)
+        end
+      else
+        for user in @users
+          users.push({ "name" => user.name, "avatar" => user.avatar })
+        end
+      end    
       return users
     end
 
@@ -178,7 +184,7 @@ class GroupsController < ApplicationController
       end
     end
 
-    def group (group_count=1, except_array=nil)
+    def group (group_count=1, except_array=nil, with_avatar=false)
       users = members
       if except_array != nil
         for item in except_array
