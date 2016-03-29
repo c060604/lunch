@@ -15,7 +15,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.avatar %></td>
+        <td><img src="<%= user.avatar %>" style="width: 44px; height: 44px;"></td>
         <td><%= user.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
